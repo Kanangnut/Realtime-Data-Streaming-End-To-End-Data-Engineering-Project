@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 
 default_args = {
     'owner': 'kanangnut',
-    'start_date': datetime(2023, 9, 3, 10, 00)
+    'start_date': datetime(2024, 02, 02, 11, 00)
 }
 
 def get_data():
