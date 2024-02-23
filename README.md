@@ -59,7 +59,7 @@ The project is designed with the following components:
 
 3. Run Docker Compose to spin up the services:
     ```bash
-    docker-compose up
+    docker-compose up -d
     ```
 
 For more detailed instructions, please check out the video tutorial linked below.
