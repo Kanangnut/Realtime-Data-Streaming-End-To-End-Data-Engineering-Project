@@ -1,22 +1,23 @@
-#!/bin/bash
-set -e
+@echo off
 
-if [ -e "/opt/airflow/requirements.txt" ]; then
-  $(command python) pip install --upgrade pip
-  $(command -v pip) install --user -r requirements.txt
-fi
+REM Check if requirements.txt exists
+if exist "C:\opt\airflow\requirements.txt" (
+    python -m pip install --upgrade pip
+    pip install --user -r C:\opt\airflow\requirements.txt
+)
 
-if [ ! -f "/opt/airflow/airflow.db" ]; then
-  airflow db init && \
-  airflow users create \
-    --username admin \
-    --firstname admin \
-    --lastname admin \
-    --role Admin \
-    --email admin@example.com \
+REM Check if airflow.db does not exist
+if not exist "C:\opt\airflow\airflow.db" (
+    airflow db init
+    airflow users create
+    --username admin
+    --firstname admin
+    --lastname admin
+    --role Admin
+    --email admin@example.com
     --password admin
-fi
+)
 
-$(command -v airflow) db upgrade
+airflow db upgrade
 
-exec airflow webserver
+start "" airflow webserver
